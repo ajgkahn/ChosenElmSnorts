@@ -1,6 +1,6 @@
-using UnityEngine;
+//using UnityEngine;
 using System.Collections;
-using System.Xml;
+//using System.Xml;
 
 struct Geocode{
 	public string lat;
@@ -16,17 +16,7 @@ struct Address{
 
 public class Merchant : Object {
 	
-	public Merchant();
-	public Merchant(string[] input);
-	public Merchant(string _id, Address adrs, Geocode loc, string nm);
-	public string ToString();
-	
-	public string name{ get; private set; }
-	public Address address{ get; private set; }
-	public Geocode position{ get; private set; }
-}
-Merchant::Merchant()
-{
+	public Merchant(){
 	name = "";
 	id = "";
 	address.city = "";
@@ -37,8 +27,7 @@ Merchant::Merchant()
 	position.lat = 0.0;
 	position.lng = 0.0;
 }
-Merchant::Merchant(string[] input)
-{
+	public Merchant(string[] input){
 	if (input.Length == 9){	
 		name = input[8];
 		id = input[0];
@@ -55,14 +44,13 @@ Merchant::Merchant(string[] input)
 		System.Console.WriteLine("DON'T F***ING DO THAT. Also, you should probably pass an array with 9 elements");
 	}
 }
-public Merchant(string _id, Address adrs, Geocode loc, string nm)
-{
+	public Merchant(string _id, Address adrs, Geocode loc, string nm){
 	name = nm;
 	id = _id;
 	address = adrs;
 	position = loc; 
 }
-string Merchant::ToString(){
+	public string ToString(){
 	string result;
 	result += "Name: ";
 	result += name;
@@ -84,4 +72,9 @@ string Merchant::ToString(){
 	result += position.lng;
 	
 	return result;
+}
+	
+	public string name{ get; private set; }
+	public Address address{ get; private set; }
+	public Geocode position{ get; private set; }
 }
