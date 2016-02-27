@@ -16,6 +16,11 @@ struct Address{
 
 public class Merchant : Object {
 	
+	public string id{ get; private set; }
+	public string name{ get; private set; }
+	public Address address{ get; private set; }
+	public Geocode position{ get; private set; }
+	
 	public Merchant(){
 	name = "";
 	id = "";
@@ -74,7 +79,4 @@ public class Merchant : Object {
 	return result;
 }
 	
-	public string name{ get; private set; }
-	public Address address{ get; private set; }
-	public Geocode position{ get; private set; }
 }
