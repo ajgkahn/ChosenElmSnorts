@@ -37,15 +37,15 @@ Merchant::Merchant()
 Merchant::Merchant(string[] input)
 {
 	if (input.Length == 9){	
-		name = input[0];
-		id = input[1];
-		city = input[2];
-		state = input[3];
-		streetName = input[4];
-		streetNumber = input[5];
-		zipCode = Int32.TryParse(input[6]);
-		position.lat = float.TryParse(input[7]);
-		position.lng = float.TryParse(input[8]);
+		name = input[8];
+		id = input[0];
+		city = input[1];
+		state = input[2];
+		streetName = input[3];
+		streetNumber = input[4];
+		zipCode = Int32.TryParse(input[5]);
+		position.lat = float.TryParse(input[6]);
+		position.lng = float.TryParse(input[7]);
 	}
 	else
 	{
