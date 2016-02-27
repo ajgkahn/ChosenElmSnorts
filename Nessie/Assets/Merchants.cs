@@ -11,7 +11,7 @@ struct Address{
 	public string state;
 	public string streetName;
 	public string streetNumber;
-	public int zipCode;
+	public string zipCode;
 }
 
 public class Merchant : Object {
@@ -32,7 +32,7 @@ Merchant::Merchant()
 	address.state = "";
 	address.streetName = "";
 	address.streetNumber = "";
-	address.zipCode = 0;
+	address.zipCode = "";
 	position.lat = 0.0;
 	position.lng = 0.0;
 }
@@ -45,7 +45,7 @@ Merchant::Merchant(string[] input)
 		address.state = input[2];
 		address.streetName = input[3];
 		address.streetNumber = input[4];
-		address.zipCode = Int32.TryParse(input[5]);
+		address.zipCode = input[5];
 		position.lat = float.TryParse(input[6]);
 		position.lng = float.TryParse(input[7]);
 	}
@@ -71,9 +71,9 @@ string Merchant::ToString(){
 	result += " ";
 	result += address.zipCode;
 	result += " Lat: ";
-	result += position.lat;
+	result += position.lat.ToString();
 	result += ", Long: ";
-	result += position.lng;
+	result += position.lng.ToString();
 	
 	return result;
 }
