@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 //using System.Xml;
 
-struct Geocode{
+public struct Geocode{
 	public string lat;
 	public string lng;
 }
-struct Address{
+public struct Address{
 	public string city;
 	public string state;
 	public string streetName;
@@ -18,31 +18,45 @@ public class Merchant : Object {
 	
 	public string id{ get; private set; }
 	public string name{ get; private set; }
-	public Address address{ get; private set; }
-	public Geocode position{ get; private set; }
+	public Address address{ get; set; }
+	public Geocode position{ get; set; }
+
+    public Merchant() {
+        name = "";
+        id = "";
+        address = new Address
+        {
+            city = "",
+            state = "",
+            streetName = "",
+            streetNumber = "",
+            zipCode = ""
+        };
+        position = new Geocode
+        {
+            lat = "",
+            lng = ""
+        };
 	
-	public Merchant(){
-	name = "";
-	id = "";
-	address.city = "";
-	address.state = "";
-	address.streetName = "";
-	address.streetNumber = "";
-	address.zipCode = "";
-	position.lat = 0.0;
-	position.lng = 0.0;
 }
 	public Merchant(string[] input){
 	if (input.Length == 9){	
 		name = input[8];
 		id = input[0];
-		address.city = input[1];
-		address.state = input[2];
-		address.streetName = input[3];
-		address.streetNumber = input[4];
-		address.zipCode = input[5];
-		position.lat = input[6];
-		position.lng = input[7];
+            address = new Address
+            {
+                city = input[1],
+                state = input[2],
+                streetName = input[3],
+                streetNumber = input[4],
+                zipCode = input[5]
+            };
+            position = new Geocode
+            {
+                lat = input[6],
+                lng = input[7]
+            };
+		
 	}
 	else
 	{
@@ -56,7 +70,7 @@ public class Merchant : Object {
 	position = loc; 
 }
 	public string ToString(){
-	string result;
+	string result = "";
 	result += "Name: ";
 	result += name;
 	result += ", ID: ";
