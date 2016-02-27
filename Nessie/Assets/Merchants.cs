@@ -3,8 +3,8 @@ using System.Collections;
 using System.Xml;
 
 struct Geocode{
-	public double lat;
-	public double lng;
+	public string lat;
+	public string lng;
 }
 struct Address{
 	public string city;
@@ -18,6 +18,7 @@ public class Merchant : Object {
 	
 	public Merchant();
 	public Merchant(string[] input);
+	public Merchant(string _id, Address adrs, Geocode loc, string nm);
 	public string ToString();
 	
 	public string name{ get; private set; }
@@ -46,13 +47,20 @@ Merchant::Merchant(string[] input)
 		address.streetName = input[3];
 		address.streetNumber = input[4];
 		address.zipCode = input[5];
-		position.lat = float.TryParse(input[6]);
-		position.lng = float.TryParse(input[7]);
+		position.lat = input[6];
+		position.lng = input[7];
 	}
 	else
 	{
 		System.Console.WriteLine("DON'T F***ING DO THAT. Also, you should probably pass an array with 9 elements");
 	}
+}
+public Merchant(string _id, Address adrs, Geocode loc, string nm)
+{
+	name = nm;
+	id = _id;
+	address = adrs;
+	position = loc; 
 }
 string Merchant::ToString(){
 	string result;
@@ -71,9 +79,9 @@ string Merchant::ToString(){
 	result += " ";
 	result += address.zipCode;
 	result += " Lat: ";
-	result += position.lat.ToString();
+	result += position.lat;
 	result += ", Long: ";
-	result += position.lng.ToString();
+	result += position.lng;
 	
 	return result;
 }
